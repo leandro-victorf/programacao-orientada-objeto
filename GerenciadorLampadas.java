@@ -1,4 +1,5 @@
-// impor lampadaINteligente
+import dispositivos.LampadaInteligente;
+
 public class GerenciadorLampadas {
 	private int contador = 0;
 	private LampadaInteligente[] lampadas = new LampadaInteligente[10];
@@ -18,3 +19,24 @@ public class GerenciadorLampadas {
 		this.lampadas[indiceLampada] = lampada;
 	}
 	
+	public void desligarLampada(int indiceLampada) {
+		LampadaInteligente lampadaDesligada = this.lampadas[indiceLampada];
+		
+		if(lampadaDesligada.getEstado() == true) {
+			lampadaDesligada.desligar();
+		}
+		this.lampadas[indiceLampada] = lampadaDesligada;
+	}
+	
+	public void ligarTodasLampadas() {
+		for(int i = 0; i < contador; i++) {
+			this.ligarLampada(i);
+		}
+	}
+	
+	public void desligarTodasLampadas() {
+		for(int i = 0; i < contador; i++) {
+			this.desligarLampada(i);
+		}
+	}
+}
